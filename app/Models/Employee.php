@@ -18,4 +18,9 @@ class Employee extends Model
 	{
 		return $this->belongsTo(Company::class);
 	}
+
+	public function position()
+	{
+		return $this->belongsTo(Position::class);
+	}
 }
