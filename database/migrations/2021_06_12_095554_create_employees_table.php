@@ -20,7 +20,6 @@ class CreateEmployeesTable extends Migration
 			$table->string('last_name');
 			$table->string('phone_number')->unique();
 			$table->string('email')->unique();
-			$table->string('position');
         });
     }
 
