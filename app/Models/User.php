@@ -49,6 +49,6 @@ class User extends Authenticatable
 
 	public function secrets()
 	{
-		return $this->hasMany(Secrets::class);
+		return $this->hasMany(Secret::class);
 	}
 }
