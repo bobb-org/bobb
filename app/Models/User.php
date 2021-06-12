@@ -46,4 +46,9 @@ class User extends Authenticatable
 	{
 		return $this->hasOne(Employee::class);
 	}
+
+	public function secrets()
+	{
+		return $this->hasMany(Secrets::class);
+	}
 }
