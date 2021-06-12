@@ -15,6 +15,7 @@ class CreateSecretsTable extends Migration
     {
         Schema::create('secrets', function (Blueprint $table) {
             $table->id();
+            $table->text('secret');
 			$table->foreignId('user_id')
 				->constrained()
 				->onDelete('cascade');
