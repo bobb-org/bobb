@@ -19,10 +19,10 @@ class CreateRealizationsTable extends Migration
             $table->string('city');
             $table->string('street');
             $table->string('number');
-			$table->foreignId('team_id')
-				->constrained()
-				->onUpdate('cascade')
-				->onDelete('cascade');
+			$table->unsignedBigInteger('owner_id');
+			$table->foreign('owner_id')
+				->references('id')
+				->on('employees');
             $table->timestamps();
         });
     }

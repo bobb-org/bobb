@@ -9,8 +9,8 @@ class Realization extends Model
 {
     use HasFactory;
 
-	public function team()
-	{
-		$this->belongsTo(Team::class)
+	public function members() {
+		return $this->belongsToMany(Employee::class);
 	}
+
 }

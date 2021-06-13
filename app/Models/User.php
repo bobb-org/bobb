@@ -42,7 +42,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-	public function employee()
+	public function employee_profile()
 	{
 		return $this->hasOne(Employee::class);
 	}

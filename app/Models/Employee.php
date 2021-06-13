@@ -19,8 +19,9 @@ class Employee extends Model
 		return $this->belongsTo(Company::class);
 	}
 
-	public function position()
+	public function realizations()
 	{
-		return $this->belongsTo(Position::class);
+		return $this->belongsToMany(Realization::class);
 	}
+
 }
