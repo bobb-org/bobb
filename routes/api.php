@@ -26,15 +26,13 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])
 		'guest:'.config('fortify.guard'),
 		$limiter ? 'throttle:'.$limiter : null,
 ]));
-
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
 
 Route::middleware('auth:sanctum')->group(function () {
     /* $enableViews = config('fortify.views', true); */
 
     /* $twoFactorLimiter = config('fortify.limiters.two-factor'); */
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('logout');
-
     Route::apiResource('realization', RealizationController::class);
     // Route::apiResource('realizations', RealizationController::class);
 
