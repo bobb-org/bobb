@@ -1,7 +1,8 @@
 import Vuex from 'vuex';
 import Vue from 'vue';
+import createPersistedState from 'vuex-persistedstate';
 import user from './modules/user';
-import dashboard from './modules/dashboard';
+import realization from './modules/realization';
 
 
 Vue.use(Vuex);
@@ -24,6 +25,12 @@ export default new Vuex.Store({
 	},
 	modules: {
 		user,
-		dashboard,
-	}
+		realization
+	},
+    plugins: [
+        createPersistedState({
+            paths: 'realization',
+        })
+    ],
+
 })

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import api from '@/utils/api';
 
 const state = () => ({
@@ -12,6 +11,11 @@ const mutations = {
 };
 
 const getters = {
+    getRealizationById(state) {
+        return realization_id => {
+            return state.realizations.find(el => el.id == realization_id);
+        }
+    }
 };
 
 const actions = {

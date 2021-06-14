@@ -16,13 +16,13 @@ export default {
 		RealizationList,
 	},
 	computed: {
-		...mapState('dashboard', {
+		...mapState('realization', {
 			realizations: 'realizations',
 		})
 
 	},
 	mounted() {
-		this.$store.dispatch('dashboard/getRealizations');
+		this.$store.dispatch('realization/getRealizations');
 	}
 }
 </script>
