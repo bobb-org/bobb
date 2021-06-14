@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '@/utils/api';
 import router from '@/router/index';
 
 const state = () => ({
@@ -22,7 +22,7 @@ const getters = {
 };
 const actions = {
 	login({commit}, formData) {
-		axios.get('/sanctum/csrf-cookie').then(() => {
+		api.get('/sanctum/csrf-cookie').then(() => {
 			axios.post('/login/', formData).then(response => {
 				commit('setAuth', {email: response.data.email})
 				router.push('/dashboard');
@@ -31,7 +31,7 @@ const actions = {
 	},
 
 	logout({commit}) {
-		axios.post('/logout').then(() => {
+		api.post('/logout').then(() => {
 			commit('setAuth', null)
 			router.push('/login');
 		});

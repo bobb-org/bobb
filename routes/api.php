@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\RealizationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\SecretController;
+use App\Http\Resources\RealizationResource;
+use App\Models\Realization;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +34,9 @@ Route::middleware('auth:sanctum')->group(function () {
     /* $twoFactorLimiter = config('fortify.limiters.two-factor'); */
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+    Route::apiResource('realization', RealizationController::class);
+    // Route::apiResource('realizations', RealizationController::class);
 
     /* // Password Reset... */
     /* if (Features::enabled(Features::resetPasswords())) { */

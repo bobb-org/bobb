@@ -1,11 +1,16 @@
-import Dashboard from '@pages/Dashboard.vue';
+import DashboardPage from '@pages/DashboardPage.vue';
 
 
 const routes = [
 	{
 		path: '/dashboard',
 		name: 'dashboard',
-		component: Dashboard
+		component: DashboardPage
+	},
+    {
+		path: '/realization/:id',
+		name: 'realization',
+		component: RealizationPage
 	}
 ]
 

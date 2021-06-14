@@ -1,4 +1,4 @@
-import Login from '@pages/Login.vue';
+import LoginPage from '@pages/LoginPage.vue';
 import ForgotPassword from '@pages/ForgotPassword.vue';
 
 
@@ -6,7 +6,7 @@ const routes = [
 	{
 		path: '/login',
 		name: 'login',
-		component: Login
+		component: LoginPage
 	},
 	{
 		path: '/forgot-password',

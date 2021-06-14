@@ -25,7 +25,6 @@ router.beforeEach((to, from, next) => {
 			query: {redirect: to.fullPath}
 		});
 	}
-	console.log(authenticated)
 	if(authenticated && onlyForLoggedOut) {
 		return next('/');
 	}
