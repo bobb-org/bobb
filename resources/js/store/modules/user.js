@@ -2,39 +2,38 @@ import axios from 'axios';
 import router from '@/router/index';
 
 const state = () => ({
-	user: null,
-	isAuthenticated: false,
+	user: window.auth_user
 });
 
 const mutations = {
-	setAuth(state, {user, isAuthenticated}) {
+	setAuth(state, user) {
 		state.user = user;
-		state.isAuthenticated = isAuthenticated;
 	}
 };
 
 const getters = {
-	currentUser() {
+	currentUser: state => {
 		return state.user;
 	},
 
-	isAuthenticated() {
-		return state.isAuthenticated
-	}
+	isAuthenticated: state => {
+		return state.user !== null;
+	},
 };
 const actions = {
-	login({commit, dispatch}, formData) {
+	login({commit}, formData) {
 		axios.get('/sanctum/csrf-cookie').then(() => {
 			axios.post('/login/', formData).then(response => {
-				commit('setAuth', {user: {email: response.data.email}, isAuthenticated: true})
+				commit('setAuth', {email: response.data.email})
 				router.push('/dashboard');
 			});
 		});
 	},
 
-	logout({commit, dispatch}) {
-		axios.post('/logout', formData).then(() => {
-			commit('setAuth', {user: null, isAuthenticated: false})
+	logout({commit}) {
+		axios.post('/logout').then(() => {
+			commit('setAuth', null)
+			router.push('/login');
 		});
 	}
 };

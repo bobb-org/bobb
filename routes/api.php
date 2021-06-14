@@ -18,8 +18,6 @@ use App\Http\Controllers\SecretController;
 
 $limiter = config('fortify.limiters.login');
 
-Route::get('/secrets', [SecretController::class, 'show']);
-
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
 	->middleware(array_filter([
 		'guest:'.config('fortify.guard'),

@@ -16,18 +16,16 @@ const router = new Router({
 
 
 router.beforeEach((to, from, next) => {
-	const authenticated = store.state.user.isAuthenticated;
+	const authenticated = store.getters['user/isAuthenticated'];
 	const onlyForLoggedOut = to.matched.some(record => record.meta.onlyForLoggedOut)
 	const isPublic = to.matched.some(record => record.meta.public);
-	console.log('isPublic', isPublic);
-	console.log('auth', authenticated);
 	if(!isPublic && !authenticated) {
 		return next({
 			path: '/login',
 			query: {redirect: to.fullPath}
 		});
 	}
-
+	console.log(authenticated)
 	if(authenticated && onlyForLoggedOut) {
 		return next('/');
 	}

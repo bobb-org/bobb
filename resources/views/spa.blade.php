@@ -16,6 +16,9 @@
         <div id="app">
 			<app></app>
 		</div>
+		<script charset="utf-8">
+			window.auth_user = {!! json_encode($auth_user); !!};
+		</script>
 		<script src="{{mix('js/app.js')}}"></script>
     </body>
 </html>
