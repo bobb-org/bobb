@@ -1,4 +1,5 @@
 import DashboardPage from '@pages/DashboardPage.vue';
+import RealizationPage from '@pages/RealizationPage.vue';
 
 
 const routes = [
@@ -10,7 +11,8 @@ const routes = [
     {
 		path: '/realization/:id',
 		name: 'realization',
-		component: RealizationPage
+		component: RealizationPage,
+        props: true,
 	}
 ]
 
