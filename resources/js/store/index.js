@@ -3,6 +3,7 @@ import Vue from 'vue';
 import createPersistedState from 'vuex-persistedstate';
 import user from './modules/user';
 import realization from './modules/realization';
+import dashboard from './modules/dashboard';
 
 
 Vue.use(Vuex);
@@ -25,7 +26,8 @@ export default new Vuex.Store({
 	},
 	modules: {
 		user,
-		realization
+		realization,
+		dashboard,
 	},
     plugins: [
         createPersistedState({
