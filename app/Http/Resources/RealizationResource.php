@@ -21,6 +21,7 @@ class RealizationResource extends JsonResource
             'street' => $this->street,
             'number' => $this->number,
             'owner_id' => $this->owner_id,
+			'autodesk_forge_bucket_id' => $this->autodesk_forge_bucket_id,
         ];
     }
 }
