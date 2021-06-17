@@ -13,4 +13,8 @@ class Realization extends Model
 		return $this->belongsToMany(Employee::class);
 	}
 
+	public function assets() {
+		return $this->hasMany(RealizationAsset::class);
+	}
+
 }
