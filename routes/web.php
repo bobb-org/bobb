@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\FileUploadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,63 +12,50 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function(){
-	return view('mainpage');
+
+Route::get('/', function () {
+    $dir    = 'C:/xampp/htdocs/bobb/storage/app/public/uploads/';
+    $files1 = preg_grep('~\.(dwg)$~', scandir($dir,1));
+    return view('fileUpload', ['dir' => $dir], ['files1' => $files1]);
 });
 
+Route::get('file-upload', [FileUploadController::class, 'fileUpload'])->name('file.upload');
+Route::post('file-upload', [FileUploadController::class, 'fileUploadPost'])->name('file.upload.post');
 
-Route::get('/choose', function(){
-	    return view('choose');
-});
-
-Route::get('/upload', function(){
-	return view('upload');
-
-});
-
-Route::post('/uploadfile', function(){
-
-	$targetfolder = 'C:/xampp/htdocs/Bobb/storage/app/dwgfiles/';
-   
-	$targetfolder = $targetfolder . basename( $_FILES['file']['name']) ;
-	
-	if(move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder))
-	
-	{
-	
-	echo "The file ". basename( $_FILES['file']['name']). " is uploaded";
-	
-	}
-	
-	else {
-	
-	echo "Problem uploading file";
-	
-	}
-	return view('choose');
+Route::get('/cos',function(){
+	$token='eyJhbGciOiJSUzI1NiIsImtpZCI6IlU3c0dGRldUTzlBekNhSzBqZURRM2dQZXBURVdWN2VhIn0.eyJzY29wZSI6WyJidWNrZXQ6Y3JlYXRlIiwiZGF0YTp3cml0ZSIsImRhdGE6cmVhZCJdLCJjbGllbnRfaWQiOiJXc08xeXVLTnNHWDhQSjZTcUV0UGZJRzhTNDl6bWdCTiIsImF1ZCI6Imh0dHBzOi8vYXV0b2Rlc2suY29tL2F1ZC9hand0ZXhwNjAiLCJqdGkiOiJtUmR4YTUxb3QyRm1Fb1RnMlFONnFuOENWejZ0V0lnaTBnMmt2cWVpS3RSM2tGREF1cEo4SXV5eFZLalZNTTZRIiwiZXhwIjoxNjI0MDIxOTk0fQ.VnSNHdVGdthOrVaBNmLOWkfDp438FR8ERyCU-q6DKXl6E4bTNuks9MJIRNl3Xyq-szAKnstA4R_WKKY4HBfeISY9GYfVmmbqwTQFn8Fm6UcPfCByG5tm6cm1_IWiKRXq1tQMOqoxbN2wdM2DNvn0wcracNgYHjUaTFFAfg3EYlXIy3vvafvTX57X-f3Y_P5OtXg2tRYTepcOOuRYnteDbAbnVE5Qf5XBiJRpWYKWCODFPZ6wQ9Wa2iHGb3ETIQ1drws45u3-znzKQH4p-0__XyyDvDK1mYE8K78tPJt2beIP91thsaZlCUPcwE6TSMZeCmTfcmI2X83rEihau54fZQ';
+	$urn='dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6MTYyMzg0MjM4My5kd2cvMTYyMzg0MjM4My5kd2c';
+	return view('welcome', ['token' => $token, 'urn' => $urn]);
 });
 
 Route::get('/ForgeConnect', function(){
-	$dir    = 'C:/xampp/htdocs/Bobb/storage/app/';
-  	$files1 = preg_grep('~\.(dwg)$~', scandir($dir,1));
+	$dir    = 'C:/xampp/htdocs/bobb/storage/app/public/uploads/';
 
+    $myfilename = $_GET['choosefile'];
+
+
+///////////////////////////////////////////////////////////////////
 	    \Autodesk\Auth\Configuration::getDefaultConfiguration()
 	   ->setClientId(env('FORGE_CLIENT_ID'))
 	   ->setClientSecret(env('FORGE_CLIENT_SECRET'));
-
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 	$twoLeggedAuth = new \Autodesk\Auth\OAuth2\TwoLeggedAuth();
 	$twoLeggedAuth->setScopes( [ 'bucket:create', 'data:write', 'data:read' ] );    //!<< This is dependent on what API you want to call.
 
 	$twoLeggedAuth->fetchToken();
-
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 	$tokenInfo = [
 	   'accessToken' => $twoLeggedAuth->getAccessToken(),
 	   'expiry'           => time() + $twoLeggedAuth->getExpiresIn(),
 	];
 
 	print_r($tokenInfo);
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 	$apiInstance = new \Autodesk\Forge\Client\Api\BucketsApi($twoLeggedAuth);
-	$bucket_key = $_GET['choosefile'];
+	$bucket_key = $myfilename;
 	$bucket_info = array(
 	  'bucket_key' => $bucket_key,  //!<< Your bucket name which should be unique globally on the Forge Server
 	  'policy_key' => 'transient'  //!<< Bucket type that affects when stored files will be deleted from the bucket.
@@ -86,8 +73,12 @@ Route::get('/ForgeConnect', function(){
 		error_log($e);
 		echo 'Exception when calling BucketsApi->createBucket: ', $e->getMessage(), PHP_EOL;
 	}
+
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+
 	$obj_api_instance = new \Autodesk\Forge\Client\Api\ObjectsApi($twoLeggedAuth);
-	$filename = '../storage/app/'.$_GET['choosefile']; //!<< File/Object to be uploaded
+	$filename = '../storage/app/public/uploads/'.$myfilename; //!<< File/Object to be uploaded
 	$body = $filename;
 	$file = new SplFileObject($body);
 	$content_length = $file->getsize();   //!<< indicates the size of the request body.
@@ -103,6 +94,9 @@ Route::get('/ForgeConnect', function(){
 		} catch( exception $e ) {
 			echo 'exception when calling objectsapi->uploadobject: ', $e->getmessage(), PHP_EOL;
 		}
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+
 		$base64Urn = rtrim( strtr( base64_encode( $urn ), '+/', '-_' ), '=' );
 		$derivatives_api= new \Autodesk\Forge\Client\Api\DerivativesApi( $twoLeggedAuth );
 		$jobInput = array(
@@ -113,6 +107,9 @@ Route::get('/ForgeConnect', function(){
 		  'type' => 'svf',
 		  'views' => array('2d', '3d')
 		);
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+
 		$jobPayloadItem = new \Autodesk\Forge\Client\Model\JobPayloadItem( $jobOutputItem );
 		$jobOutput = [
 		  'formats' => array( $jobPayloadItem )
@@ -121,6 +118,8 @@ Route::get('/ForgeConnect', function(){
 		$job = new \Autodesk\Forge\Client\Model\JobPayload();
 		$job->setInput( $jobPayloadInput );
 		$job->setOutput( $jobPayloadOutput );
+
+		
 		print_r($jobInput);
 		$x_ads_force = true;
 		try {
@@ -133,7 +132,8 @@ Route::get('/ForgeConnect', function(){
 		} catch( Exception $e ) {
 			echo 'Exception when calling DerivativesApi->translate: ', $e->getMessage(), PHP_EOL;
 		};
-
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 		try {
 		  $result = $derivatives_api->getManifest( $base64Urn, null );
 
@@ -143,12 +143,10 @@ Route::get('/ForgeConnect', function(){
 		} catch( Exception $e ) {
 		  echo 'Exception when calling DerivativesApi->getManifest: ', $e->getMessage(), PHP_EOL;
 		}
-echo<<<END
-<form action="/">
-<input type="submit" value="Powrót" />
-</form>
-END;
+    echo<<<END
+    <form action="/cos?">
+    <input type="submit" value="Powrót" />
+    </form>
+    END;
 	return view('welcome', ['token' => $twoLeggedAuth->getAccessToken(), 'urn' => $result['urn']]);
 });
-
-?>
