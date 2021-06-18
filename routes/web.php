@@ -22,11 +22,6 @@ Route::get('/', function () {
 Route::get('file-upload', [FileUploadController::class, 'fileUpload'])->name('file.upload');
 Route::post('file-upload', [FileUploadController::class, 'fileUploadPost'])->name('file.upload.post');
 
-Route::get('/cos',function(){
-	$token='eyJhbGciOiJSUzI1NiIsImtpZCI6IlU3c0dGRldUTzlBekNhSzBqZURRM2dQZXBURVdWN2VhIn0.eyJzY29wZSI6WyJidWNrZXQ6Y3JlYXRlIiwiZGF0YTp3cml0ZSIsImRhdGE6cmVhZCJdLCJjbGllbnRfaWQiOiJXc08xeXVLTnNHWDhQSjZTcUV0UGZJRzhTNDl6bWdCTiIsImF1ZCI6Imh0dHBzOi8vYXV0b2Rlc2suY29tL2F1ZC9hand0ZXhwNjAiLCJqdGkiOiJtUmR4YTUxb3QyRm1Fb1RnMlFONnFuOENWejZ0V0lnaTBnMmt2cWVpS3RSM2tGREF1cEo4SXV5eFZLalZNTTZRIiwiZXhwIjoxNjI0MDIxOTk0fQ.VnSNHdVGdthOrVaBNmLOWkfDp438FR8ERyCU-q6DKXl6E4bTNuks9MJIRNl3Xyq-szAKnstA4R_WKKY4HBfeISY9GYfVmmbqwTQFn8Fm6UcPfCByG5tm6cm1_IWiKRXq1tQMOqoxbN2wdM2DNvn0wcracNgYHjUaTFFAfg3EYlXIy3vvafvTX57X-f3Y_P5OtXg2tRYTepcOOuRYnteDbAbnVE5Qf5XBiJRpWYKWCODFPZ6wQ9Wa2iHGb3ETIQ1drws45u3-znzKQH4p-0__XyyDvDK1mYE8K78tPJt2beIP91thsaZlCUPcwE6TSMZeCmTfcmI2X83rEihau54fZQ';
-	$urn='dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6MTYyMzg0MjM4My5kd2cvMTYyMzg0MjM4My5kd2c';
-	return view('welcome', ['token' => $token, 'urn' => $urn]);
-});
 
 Route::get('/ForgeConnect', function(){
 	$dir    = 'C:/xampp/htdocs/bobb/storage/app/public/uploads/';
