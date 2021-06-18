@@ -19,10 +19,9 @@ const getters = {
 };
 
 const actions = {
-	getRealizations({commit}) {
-		api.get('/realization').then(({data: responseData}) => {
-			const {data} = responseData;
-			commit('setRealizations', data);
+	postRealization({commit}) {
+		api.post('/realization').then(res => {
+			console.log(res);
 		});
 	},
 };

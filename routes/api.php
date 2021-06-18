@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RealizationController;
+use App\Http\Resources\RealizationDashboardResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
@@ -33,7 +34,11 @@ Route::middleware('auth:sanctum')->group(function () {
     /* $enableViews = config('fortify.views', true); */
 
     /* $twoFactorLimiter = config('fortify.limiters.two-factor'); */
-    Route::apiResource('realization', RealizationController::class);
+	Route::get('/realizations', function() {
+		return Auth::User()->employee_profile->realizations->map(function ($realization) {
+			return $realization->only(['name', 'id']);
+		})->toArray();
+	});
     // Route::apiResource('realizations', RealizationController::class);
 
     /* // Password Reset... */

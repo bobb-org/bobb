@@ -1,9 +1,9 @@
 <template>
 <nav class="navbar" role="navigation" aria-label="main navigation">
 	<div class="navbar-brand">
-		<a class="navbar-item">
+		<router-link class="navbar-item" to="/">
 			<img src="/img/logo.png">
-		</a>
+		</router-link>
 	</div>
 	<div id="navbarBasicExample" class="navbar-menu">
 		<div class="navbar-start">
@@ -14,7 +14,7 @@
 					<div class="mr-4">
 						<strong >{{user.email}}</strong>
 					</div>
-					<a @click="logout" class="button is-danger is-rounded">
+		 			<a @click="logout" class="button is-danger is-rounded">
 						<span class="icon is-small">
 							<i class="fas fa-sign-out-alt"></i>
 						</span>

@@ -9,6 +9,8 @@ class Realization extends Model
 {
     use HasFactory;
 
+	protected $fillable = ['name', 'city', 'street', 'number']
+
 	public function members() {
 		return $this->belongsToMany(Employee::class);
 	}
