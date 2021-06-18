@@ -6,22 +6,15 @@ const state = () => ({
 
 const mutations = {
 	setRealizations(state, realizationList) {
+		console.log(realizationList);
 		state.realizations = realizationList;
 	}
 };
 
-const getters = {
-    getRealizationById(state) {
-        return realization_id => {
-            return state.realizations.find(el => el.id == realization_id);
-        }
-    }
-};
-
 const actions = {
-	postRealization({commit}) {
-		api.post('/realization').then(res => {
-			console.log(res);
+	getRealizations({commit}) {
+		api.get('/realizations').then(res => {
+			commit('setRealizations', res?.data);
 		});
 	},
 };
@@ -29,7 +22,6 @@ const actions = {
 export default {
 	namespaced: true,
 	state,
-	getters,
 	mutations,
 	actions,
 }

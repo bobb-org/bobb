@@ -16,7 +16,6 @@ class RealizationController extends Controller
      */
     public function index()
     {
-        return new RealizationResource(Auth::User()->employee_profile->realizations);
 
         //
     }
@@ -38,8 +37,38 @@ class RealizationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+	{
+		/* $realization = new Realization(); */
+		/* $realization->fill($request->all()) */
+		/* $realization->owner_id = $request->user()->id; */
+
+		/* Autodesk\Auth\Configuration::getDefaultConfiguration() */
+		/*    ->setClientId(env('FORGE_CLIENT_ID')) */
+		/*    ->setClientSecret(env('FORGE_CLIENT_SECRET')); */
+
+		/* $twoLeggedAuth = new Autodesk\Auth\OAuth2\TwoLeggedAuth(); */
+		/* $twoLeggedAuth->setScopes( [ 'bucket:create', 'data:write', 'data:read' ] ); */
+
+		/* $twoLeggedAuth->fetchToken(); */
+
+		/* $tokenInfo = [ */
+		/*    'accessToken' => $twoLeggedAuth->getAccessToken(), */
+		/*    'expiry'           => time() + $twoLeggedAuth->getExpiresIn(), */
+		/* ]; */
+		/* $bucket_key = hash($request->post('name') . $request->post('owner_id') . time()); */
+		/* 	$bucket_info = array( */
+		/* 	  'bucket_key' => $bucket_key, */
+		/* 	  'policy_key' => 'transient' */
+		/* ); */
+		/* $post_buckets = new \Autodesk\Forge\Client\Model\PostBucketsPayload($bucket_info); */
+		/* $apiInstance = new Autodesk\Forge\Client\Api\BucketsApi($twoLeggedAuth); */
+		/* try { */
+		/* 	$result = $apiInstance->createBucket($post_buckets, $x_ads_region); */
+		/* 	print_r($result); */
+		/* } catch (Exception $e) { */
+		/* 	error_log($e); */
+		/* } */
+		        //
     }
 
     /**
