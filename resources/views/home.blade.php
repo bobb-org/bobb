@@ -18,10 +18,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
+                    @foreach($memberList as $member)
+                    @endforeach
                     @foreach ($realizationList as $realization) 
-                        
+                        @if($realization->id_realization == $member->id_realization)
                         <div style=" float:left;padding:5px; text-align: center;"><a href="/asset/{{ $realization->id_realization }}"><div style="font-size:50px;">&#128448;</div></a>{{ $realization->name }}</div>
+                        @endif
                     @endforeach
                     
                 </div>
