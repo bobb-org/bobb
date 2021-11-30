@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Realization;
 use App\Models\Member;
 use App\User;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -25,11 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $auth = Auth::user()->id;
+        $memberList = Member::where('id',$auth)->get();
         $realizationList = Realization::all();
         //$realizationList =Member::select( Member::raw("SELECT r.id_realization, r.name, u.name FROM realizations as r, users as u, members as m WHERE m.id = 7 AND m.id_realization = r.id_realization AND m.id = u.id"));
         
 
-        return view('home',["realizationList"=>$realizationList]);
+        return view('home',["realizationList"=>$realizationList, "memberList"=>$memberList]);
     }
 
     public function create()
