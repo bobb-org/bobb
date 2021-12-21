@@ -28,7 +28,15 @@
                         @endforeach   
                         
                     @endforeach
-   
+
+                    @foreach ($realizationList as $realization) 
+                        @if($realization->id == Auth::user()->id)
+                            <div style=" float:left;padding:5px; text-align: center;"><a href="/asset/{{ $realization->id_realization }}"><div style="font-size:50px;">&#128448;</div></a>{{ $realization->name }}</div>
+                        @endif
+                    @endforeach
+                    
+                    
+                    
                 </div>
             </div>
         </div>
