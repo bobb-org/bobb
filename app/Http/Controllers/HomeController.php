@@ -49,8 +49,9 @@ class HomeController extends Controller
         $realization->street = $request->input('street');
         $realization->number = $request->input('number');
         $realization->save();
-
+        
         return redirect()->action('HomeController@index');
     }
+
 
 }
