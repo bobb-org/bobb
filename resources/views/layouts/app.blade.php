@@ -57,7 +57,7 @@
                                             Realizacje
                                         </a>
                                     </li>
-                                    @if( Auth::user()->role == 'superadmin')
+                                    @if( Auth::user()->role == 'superadmin' || Auth::user()->role == 'kierownik_projektu')
                                     <li>
                                         <a href="/role">
                                             Admin panel
