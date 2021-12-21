@@ -11,7 +11,7 @@
                 
                     @if( Auth::user()->role == 'superadmin' || Auth::user()->role == 'kierownik_projektu')
                         
-                        <a href="">&#x1F464;</a> 
+                        <a href="/memberaddform/{{ $assetid }}">&#x1F464;</a> 
                         <a href="/assetcreate/{{ $assetid }}"> &#10010;</a> 
 
                     @endif
@@ -29,7 +29,7 @@
                     @foreach ($assetList as $asset)
                         <div style=" float:left;padding:5px; text-align: center;">
                         @if( Auth::user()->role == 'superadmin' || Auth::user()->role == 'kierownik_projektu' || Auth::user()->role == 'inzynier')
-                            <a href="/"><div style="font-size:50px;">&#10066;</div></a>
+                            <a href="/assetshow/{{ $asset->id_asset }}"><div style="font-size:50px;">&#10066;</div></a>
                         @else
                             <div style="font-size:50px;">&#10066;</div>
                         @endif
