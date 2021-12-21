@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if( Auth::user()->role == 'superadmin' || Auth::user()->role == 'kierownik_projektu')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -73,7 +74,9 @@
                                     <option selected value="pracownik">pracownik</option>
                                     <option value="inzynier">inzynier</option>
                                     <option value="kierownik_projektu">kierownik_projektu</option>
-                                    <option value="superadmin">superadmin</option>
+                                    @if(Auth::user()->role == 'superadmin')
+                                        <option value="superadmin">superadmin</option>
+                                    @endif
                                 </select>
                                 @if ($errors->has('role'))
                                     <span class="help-block">
@@ -123,4 +126,7 @@
         </div>
     </div>
 </div>
+@else
+    <script>window.location = "/home";</script>
+@endif
 @endsection
