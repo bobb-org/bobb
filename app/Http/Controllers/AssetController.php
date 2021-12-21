@@ -28,6 +28,15 @@ class AssetController extends Controller
         
         return view('asset',["assetid"=>$id_realization, "assetList"=>$assetList], );
     }
+    public function show($id_asset)
+    {
+        
+        $assetList2 = Asset::where('id_asset',$id_asset)->get();
+        
+        return view('assetshow',["assetList2"=>$assetList2]);
+    }
+
+
     public function create($id_realization)
     {
         return view('assetcreate',["id_realization"=>$id_realization]);
@@ -43,5 +52,6 @@ class AssetController extends Controller
 
         return redirect()->action('AssetController@index',$request->input('id_realization'));
     }
+    
 
 }
