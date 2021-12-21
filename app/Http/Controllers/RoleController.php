@@ -69,6 +69,9 @@ class RoleController extends Controller
         $userrole=$request->input('role');
         $userList = User::find($userid);
         $userList->role = $userrole;
+        $userList->name = $request->input('name');
+        $userList->surnname = $request->input('surnname');
+        $userList->email = $request->input('email');
         $userList->save();
         return redirect('role');
     }
