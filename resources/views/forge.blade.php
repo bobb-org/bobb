@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -11,7 +10,6 @@
   <div id="forgeViewer"></div>
 </body>
 <script>
-
 var viewer;
 var options = {
     env: 'AutodeskProduction',
@@ -29,30 +27,23 @@ var options = {
         // }
         //
 		var token = <?php echo json_encode($token); ?>;
-
         var timeInSeconds = 3600; // Use value provided by Forge Authentication (OAuth) API
         onTokenReady(token, timeInSeconds);
     }
 };
-
 var documentId = 'urn:' + <?php echo json_encode($urn); ?>;
 Autodesk.Viewing.Initializer(options, function() {
-
     var htmlDiv = document.getElementById('forgeViewer');
     viewer = new Autodesk.Viewing.GuiViewer3D(htmlDiv);
     viewer.start();
     Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
-
     function onDocumentLoadSuccess(viewerDocument) {
         // Choose the default viewable - most likely a 3D model, rather than a 2D sheet.
         var defaultModel = viewerDocument.getRoot().getDefaultGeometry();
         viewer.loadDocumentNode(viewerDocument, defaultModel);
     }
-
     function onDocumentLoadFailure() {
         console.error('Failed fetching Forge manifest');
     }    
-
 });
-
 </script>
