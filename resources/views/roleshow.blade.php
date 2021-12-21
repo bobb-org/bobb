@@ -41,7 +41,9 @@
                                                             <option value="pracownik">pracownik</option>
                                                             <option value="inzynier">inzynier</option>
                                                             <option value="kierownik_projektu">kierownik_projektu</option>
-                                                            <option value="superadmin">superadmin</option>
+                                                            @if(Auth::user()->role == 'superadmin')
+                                                                <option value="superadmin">superadmin</option>
+                                                            @endif
                                             </select>
                                             <input type="text" name="name" value="{{ $user->name }}" />
                                             <input type="text" name="surnname" value="{{ $user->surnname }}" />
