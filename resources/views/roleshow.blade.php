@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if( Auth::user()->role == 'superadmin')
+@if( Auth::user()->role == 'superadmin' || Auth::user()->role == 'kierownik_projektu')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -19,7 +19,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>ID</th><th>Imie</th> <th>Nazwisko</th> <th>mail</th> <th>rola</th> 
+                                <th>ID</th><th>Imie</th> <th>Nazwisko</th> <th>mail</th>  
                             </tr>
                         </thead>
                         <tbody>
@@ -31,6 +31,7 @@
                                     @endforeach
                                     
                                     <td>
+                                    
                                         <form action="{{ action('RoleController@updateuser') }}" method="POST" role="form">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <input type="hidden" name="id" value="{{ $user->id }}" />
@@ -42,9 +43,12 @@
                                                             <option value="kierownik_projektu">kierownik_projektu</option>
                                                             <option value="superadmin">superadmin</option>
                                             </select>
-                                            <input type="submit" value="Aktualizuj" class="btn btn-primary"/>
+                                            <input type="text" name="name" value="{{ $user->name }}" />
+                                            <input type="text" name="surnname" value="{{ $user->surnname }}" />
+                                            <input type="text" name="email" value="{{ $user->email }}" />
                                         </div>
-                                        
+
+                                        <input type="submit" value="Aktualizuj" class="btn btn-primary"/>
                                     </td>
                                 </tr>
                                 
