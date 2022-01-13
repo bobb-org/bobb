@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SpaController;
+use App\Http\Controllers\OrganizationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +14,44 @@ use App\Http\Controllers\SpaController;
 |
 */
 
-Route::get('/{any}', [SpaController::class, 'index'])->where('any', '.*');
+//Route::get('/{any}', [SpaController::class, 'index'])->where('any', '.*');
+
+Route::get('/Organization/show', [OrganizationController::class, 'show']);
+Route::get('/Organization/store', [OrganizationController::class, 'store']);//post
+Route::get('/Organization/update', [OrganizationController::class, 'update']);//post
+Route::get('/Organization/delete', [OrganizationController::class, 'delete']);//post or get
+
+Route::get('/Account/show', [OrganizationController::class, 'show']);
+Route::get('/Account/store', [OrganizationController::class, 'store']);//post
+Route::get('/Account/update', [OrganizationController::class, 'update']);//post
+Route::get('/Account/delete', [OrganizationController::class, 'delete']);//post or get
+
+Route::get('/Organization/show', [OrganizationController::class, 'show']);
+Route::get('/Organization/store', [OrganizationController::class, 'store']);//post
+Route::get('/Organization/update', [OrganizationController::class, 'update']);//post
+Route::get('/Organization/delete', [OrganizationController::class, 'delete']);//post or get
+
+Route::get('/Organization/show', [OrganizationController::class, 'show']);
+Route::get('/Organization/store', [OrganizationController::class, 'store']);//post
+Route::get('/Organization/update', [OrganizationController::class, 'update']);//post
+Route::get('/Organization/delete', [OrganizationController::class, 'delete']);//post or get
+
+Route::get('/Organization/show', [OrganizationController::class, 'show']);
+Route::get('/Organization/store', [OrganizationController::class, 'store']);//post
+Route::get('/Organization/update', [OrganizationController::class, 'update']);//post
+Route::get('/Organization/delete', [OrganizationController::class, 'delete']);//post or get
+
+Route::get('/Organization/show', [OrganizationController::class, 'show']);
+Route::get('/Organization/store', [OrganizationController::class, 'store']);//post
+Route::get('/Organization/update', [OrganizationController::class, 'update']);//post
+Route::get('/Organization/delete', [OrganizationController::class, 'delete']);//post or get
+
+Route::get('/Organization/show', [OrganizationController::class, 'show']);
+Route::get('/Organization/store', [OrganizationController::class, 'store']);//post
+Route::get('/Organization/update', [OrganizationController::class, 'update']);//post
+Route::get('/Organization/delete', [OrganizationController::class, 'delete']);//post or get
+
+Route::get('/Organization/show', [OrganizationController::class, 'show']);
+Route::get('/Organization/store', [OrganizationController::class, 'store']);//post
+Route::get('/Organization/update', [OrganizationController::class, 'update']);//post
+Route::get('/Organization/delete', [OrganizationController::class, 'delete']);//post or get

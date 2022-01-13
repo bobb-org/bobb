@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Realization extends Model
+class Asset extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class Realization extends Model
      * @var array
      */
     protected $fillable = [
-        'project', 'employee', 'startDate', 'plannedEndDate', 'supervisor', 
+        'realizationId', 'autodeskForgeUrn', 
     ];
 
     
