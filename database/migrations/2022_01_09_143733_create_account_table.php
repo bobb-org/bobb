@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRealizationsTable extends Migration
+class CreateAccountTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateRealizationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('realizations', function (Blueprint $table) {
+        Schema::create('account', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('city');
-            $table->string('street');
-            $table->string('number');
-			$table->unsignedBigInteger('owner_id');
-			$table->foreign('owner_id')
-				->references('id')
-				->on('employees');
+            $table->string('login', 255);
+            $table->string('password', 255);
+            $table->string('email', 255);
+            $table->foreignId('owner')->constrained('employee');
+            $table->integer('active');
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ class CreateRealizationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('realizations');
+        Schema::dropIfExists('account');
     }
 }

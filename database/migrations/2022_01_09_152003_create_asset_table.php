@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAutdeskForgeBucketIdToRealization extends Migration
+class CreateAssetTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddAutdeskForgeBucketIdToRealization extends Migration
      */
     public function up()
     {
-        Schema::table('realizations', function (Blueprint $table) {
-			$table->text('autodesk_forge_bucket_id');
+        Schema::create('asset', function (Blueprint $table) {
+            $table->id();
+			$table->foreignId('realizationId')->constrained('realization');
+			$table->text('autodeskForgeUrn');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddAutdeskForgeBucketIdToRealization extends Migration
      */
     public function down()
     {
-        Schema::table('realizations', function (Blueprint $table) {
-			$table->dropColumn('autodesk_forge_bucket_id');
-        });
+        Schema::dropIfExists('asset');
     }
 }
