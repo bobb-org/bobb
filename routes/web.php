@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SpaController;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\AccountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +22,10 @@ Route::post('/Organization/store', [OrganizationController::class, 'store']);//p
 Route::post('/Organization/update', [OrganizationController::class, 'update']);//post
 Route::get('/Organization/delete', [OrganizationController::class, 'delete']);//post or get
 
-Route::get('/Account/show', [OrganizationController::class, 'show']);
-Route::post('/Account/store', [OrganizationController::class, 'store']);//post
-Route::post('/Account/update', [OrganizationController::class, 'update']);//post
-Route::get('/Account/delete', [OrganizationController::class, 'delete']);//post or get
+Route::get('/Account/show', [AccountController::class, 'show']);
+Route::post('/Account/store', [AccountController::class, 'store']);//post
+Route::post('/Account/update', [AccountController::class, 'update']);//post
+Route::get('/Account/delete', [AccountController::class, 'delete']);//post or get
 
 Route::get('/Organization/show', [OrganizationController::class, 'show']);
 Route::post('/Organization/store', [OrganizationController::class, 'store']);//post
