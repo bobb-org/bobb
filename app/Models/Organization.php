@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Realization extends Model
+class Organization extends Model
 {
-    protected $table='realization';
+    protected $table='organization';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'project', 'employee', 'startDate', 'plannedEndDate', 'supervisor', 
+        'name', 'contract', 'email', 'adress', 'postCode', 'city', 'nip',
     ];
 
     
