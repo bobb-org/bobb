@@ -2,26 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    use HasFactory;
+    protected $table='employee';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'surname', 'contact', 'email', 'PESEL', 'seriesIdCard', 'numberIdCard','validityIdCard', 'dateOfBirth', 'fatherName', 'adress', 'postCode', 'city', 'company', 'position',
+    ];
 
-	public function user()
-	{
-		return $this->belongsTo(User::class);
-	}
-
-	public function company()
-	{
-		return $this->belongsTo(Company::class);
-	}
-
-	public function realizations()
-	{
-		return $this->belongsToMany(Realization::class);
-	}
-
+    
 }
