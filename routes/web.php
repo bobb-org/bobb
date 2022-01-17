@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard'); //uwaga tu jest foreach od account show
 
 
 //Route::get('/{any}', [SpaController::class, 'index'])->where('any', '.*');

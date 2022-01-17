@@ -18,8 +18,8 @@ class AccountController extends Controller
        $accountList = Account::all();
 
        //dd('test1');
-
-        return json_encode($accountList); // pokazuje wszystko z tabeli, przekazuje json
+       return view('dashboard',["accountList"=>$accountList], );
+        //return json_encode($accountList); // pokazuje wszystko z tabeli, przekazuje json
     }
 
     public function store(Request $request)
