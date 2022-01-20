@@ -5,19 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Realization extends Model
+class Asset extends Model
 {
-   
+
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'realization_id', 'start_date', 'planned_end_date', 'supervisor', 
+        'realizationId', 'autodeskForgeUrn', 
     ];
 
-    public function asset(){
-        return $this->hasMany(Asset::Class);
+    public function assetObject(){
+        return $this->hasMany(AssetObject::Class);
+    }
+    public function realization(){
+        return $this->belongsTo(Realization::Class);
     }
 }

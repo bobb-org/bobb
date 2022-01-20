@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Realization extends Model
+class Account extends Model
 {
-   
+    
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'realization_id', 'start_date', 'planned_end_date', 'supervisor', 
+        'login', 'password', 'employee_id', 'active', 
     ];
 
-    public function asset(){
-        return $this->hasMany(Asset::Class);
+    public function employee(){
+        return $this->belongsTo(Employee::Class);
     }
 }
