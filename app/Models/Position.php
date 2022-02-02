@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Position extends Model
 {
-    protected $table='position';
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -16,5 +17,7 @@ class Position extends Model
         'name', 'permission', 
     ];
 
-    
+    public function employee(){
+        return $this->hasOne(Employee::Class);
+    }
 }

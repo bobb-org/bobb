@@ -1,0 +1,349 @@
+{
+    "Struktura sieci teletechnicznej i telekomunikacyjnej": {
+        "Studnie kanalizacji teletechnicznej/elektrycznej": {
+            "Nazwa/numer studni": "???",
+            "Strona północna": {
+                "Rury kanalizacyjne": {
+                    "Ilość": "???",
+                    "Rozmiar": "?????"
+                },
+                "Pułki/uchwyty": {
+                    "Rzędy pionowe": "???",
+                    "Rzędy poziome": "???",
+                    "Ilość mocowań": "Rzędy pionowe * Rzędy poziome"
+                }
+            },
+            "Strona południowa": {
+                "Rury kanalizacyjne": {
+                    "Ilość": "???",
+                    "Rozmiar": "?????"
+                },
+                "Pułki/uchwyty": {
+                    "Rzędy pionowe": "???",
+                    "Rzędy poziome": "???",
+                    "Ilość mocowań": "Rzędy pionowe * Rzędy poziome"
+                }
+            },
+            "Strona wschodnia": {
+                "Rury kanalizacyjne": {
+                    "Ilość": "???",
+                    "Rozmiar": "?????"
+                },
+                "Pułki/uchwyty": {
+                    "Rzędy pionowe": "???",
+                    "Rzędy poziome": "???",
+                    "Ilość mocowań": "Rzędy pionowe * Rzędy poziome"
+                }
+            },
+            "Strona zachodnia": {
+                "Rury kanalizacyjne": {
+                    "Ilość": "???",
+                    "Rozmiar": "?????"
+                },
+                "Pułki/uchwyty": {
+                    "Rzędy pionowe": "???",
+                    "Rzędy poziome": "???",
+                    "Ilość mocowań": "Rzędy pionowe * Rzędy poziome"
+                }
+            }
+        },
+        "Sieć strukturalna": {
+            "Okablowanie": {
+                "Symbol": "????????",
+                "Przekrój": "#####",
+                "Szafa RACK": {
+                    "Numer": "???",
+                    "Lokalizacja": {
+                        "Budynek": "?????????",
+                        "Poziom": "?????????",
+                        "Pomieszczenie": "?????????"
+                    },
+                    "Numer panelu": "???",
+                    "Numer portu": "???"
+                }
+            },
+            "Gniazdo": {
+                "Rodzaj": "natynkowe/podtynkowe",
+                "Typ": "simplex/duplex",
+                "Numer gniazda": "???",
+                "Korpus": false,
+                "Front": false,
+                "Ramka": false
+            },
+            "Typ": "CCTV/SSP/DSO/LAN/BMS"
+        },
+        "Systemy bezpieczeństwa": {
+            "System kontroli dostępu": {
+                "Czytnik": {
+                    "Wysokość": "0 mm",
+                    "Odległość": [
+                        {
+                            "od ościeżnicy": "0 mm"
+                        },
+                        {
+                            "od ściany": "0 mm"
+                        }
+                    ],
+                    "Ilość": "0",
+                    "Korpus": false,
+                    "Front": false,
+                    "Podłączenie": false,
+                    "Typ": [
+                        {
+                            "QR": false
+                        },
+                        {
+                            "RFID": false
+                        }
+                    ],
+                    "Okablowanie": {
+                        "Sterowanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        },
+                        "Zasilanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        }
+                    }
+                },
+                "Przycisk ewakuacyjny": {
+                    "Wysokość": "0 mm",
+                    "Odległość": [
+                        {
+                            "od ościeżnicy": "0 mm"
+                        },
+                        {
+                            "od ściany": "0 mm"
+                        }
+                    ],
+                    "Ilość": "0",
+                    "Korpus": false,
+                    "Front": false,
+                    "Podłączenie": false,
+                    "Okablowanie": {
+                        "Sterowanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        },
+                        "Zasilanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        }
+                    }
+                },
+                "Videointercom": {
+                    "Wysokość": "0 mm",
+                    "Odległość": [
+                        {
+                            "od ościeżnicy": "0 mm"
+                        },
+                        {
+                            "od ściany": "0 mm"
+                        }
+                    ],
+                    "Ilość": "0",
+                    "Korpus": false,
+                    "Front": false,
+                    "Podłączenie": false,
+                    "Okablowanie": {
+                        "Sterowanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        },
+                        "Zasilanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        }
+                    }
+                },
+                "Szafa sterownicza": {
+                    "Numer szafki": "?????????",
+                    "Lokalizacja": {
+                        "Budynek": "?????????",
+                        "Poziom": "?????????",
+                        "Pomieszczenie": "?????????"
+                    },
+                    "Numer kontrolera": "????????"
+                },
+                "Lokalizacja": {
+                    "Budynek": "?????????",
+                    "Poziom": "?????????",
+                    "Pomieszczenie": "?????????",
+                    "Oś pozioma": "??",
+                    "Oś pionowa": "??"
+                },
+                "Kontaktron": {
+                    "Numer": "???"
+                }
+            },
+            "Systemy PPOŻ": {
+                "System sygnalizacji pożaru": {
+                    "Czujnik dymu": {
+                        "Strefa": "???",
+                        "Numer pętli": "???",
+                        "Lokalizacja": {
+                            "Budynek": "?????????",
+                            "Poziom": "?????????",
+                            "Pomieszczenie": "?????????",
+                            "Oś pozioma": "??",
+                            "Oś pionowa": "??"
+                        },
+                        "Okablowanie": {
+                            "Sterowanie": {
+                                "Symbol": "????????",
+                                "Przekrój": "#####"
+                            },
+                            "Zasilanie": {
+                                "Symbol": "????????",
+                                "Przekrój": "#####"
+                            }
+                        }
+                    },
+                    "Awaryjny przycisk pożarowy": {
+                        "Korpus": false,
+                        "Front": false,
+                        "Okablowanie": {
+                            "Sterowanie": {
+                                "Symbol": "????????",
+                                "Przekrój": "#####"
+                            },
+                            "Zasilanie": {
+                                "Symbol": "????????",
+                                "Przekrój": "#####"
+                            }
+                        },
+                        "Strefa": "???",
+                        "Numer pętli": "???"
+                    }
+                },
+                "Dźwiękowy system ostrzegawczy": {
+                    "Strefa": "???",
+                    "Numer pętli": "???",
+                    "Lokalizacja": {
+                        "Budynek": "?????????",
+                        "Poziom": "?????????",
+                        "Pomieszczenie": "?????????",
+                        "Oś pozioma": "??",
+                        "Oś pionowa": "??"
+                    },
+                    "Głośnik": {
+                        "Obwód": "???",
+                        "Typ": "???",
+                        "Montaż": false
+                    },
+                    "Okablowanie": {
+                        "Sterowanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        },
+                        "Zasilanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        }
+                    }
+                }
+            },
+            "System włamań i napadów": {
+                "Czujnik ruchu": {
+                    "Strefa": "???",
+                    "Numer pętli": "???",
+                    "Lokalizacja": {
+                        "Budynek": "?????????",
+                        "Poziom": "?????????",
+                        "Pomieszczenie": "?????????",
+                        "Oś pozioma": "??",
+                        "Oś pionowa": "??"
+                    },
+                    "Okablowanie": {
+                        "Sterowanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        },
+                        "Zasilanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        }
+                    }
+                },
+                "Kontaktron": {
+                    "Numer": "???"
+                },
+                "Manipulator": {
+                    "Wysokość": "0 mm",
+                    "Odległość": [
+                        {
+                            "od ościeżnicy": "0 mm"
+                        },
+                        {
+                            "od ściany": "0 mm"
+                        }
+                    ],
+                    "Ilość": "0",
+                    "Korpus": false,
+                    "Front": false,
+                    "Podłączenie": false,
+                    "Typ": [
+                        {
+                            "QR": false
+                        },
+                        {
+                            "RFID": false
+                        }
+                    ],
+                    "Okablowanie": {
+                        "Sterowanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        },
+                        "Zasilanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        }
+                    }
+                },
+                "Szafa sterownicza/expander": {
+                    "Numer szafki": "?????????",
+                    "Lokalizacja": {
+                        "Budynek": "?????????",
+                        "Poziom": "?????????",
+                        "Pomieszczenie": "?????????"
+                    },
+                    "Numer kontrolera": "????????"
+                },
+                "Przycisk napadowy": {
+                    "Wysokość": "0 mm",
+                    "Odległość": [
+                        {
+                            "od ościeżnicy": "0 mm"
+                        },
+                        {
+                            "od ściany": "0 mm"
+                        }
+                    ],
+                    "Ilość": "0",
+                    "Korpus": false,
+                    "Front": false,
+                    "Podłączenie": false,
+                    "Okablowanie": {
+                        "Sterowanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        },
+                        "Zasilanie": {
+                            "Symbol": "????????",
+                            "Przekrój": "#####"
+                        }
+                    },
+                    "Opis lokalizacji": "????"
+                },
+                "Lokalizacja": {
+                    "Budynek": "?????????",
+                    "Poziom": "?????????",
+                    "Pomieszczenie": "?????????"
+                }
+            }
+        }
+    },
+    "Struktura sieci elektrycznej":"trwają prace"
+}

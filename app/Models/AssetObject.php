@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AssetObject extends Model
 {
-    protected $table='assetobject';
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -15,6 +16,10 @@ class AssetObject extends Model
     protected $fillable = [
         'name', 'contract', 'email', 'adress', 'postCode', 'city', 'nip',
     ];
+
+    public function asset(){
+        return $this->belongsTo(Asset::Class);
+    }
 
     
 }

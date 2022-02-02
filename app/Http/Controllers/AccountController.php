@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Account;
+use App\Models\Employee;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
@@ -18,8 +21,8 @@ class AccountController extends Controller
        $accountList = Account::all();
 
        //dd('test1');
-       return view('dashboard',["accountList"=>$accountList], );
-        //return json_encode($accountList); // pokazuje wszystko z tabeli, przekazuje json
+
+        return $accountList->ToJson(); // pokazuje wszystko z tabeli, przekazuje json
     }
 
     public function store(Request $request)
@@ -29,12 +32,12 @@ class AccountController extends Controller
         $account->login = $request->input('login');
         $account->password = $request->input('password');
         $account->email = $request->input('email');
-        $account->owner = $request->input('owner');
+        $account->employee_id = $request->input('employee_id');
         $account->active = $request->input('active');
         
         $account->save();
         
-        return redirect('/Account/show');
+        return redirect('/account/show');
     }
 
     public function update(Request $request)
@@ -46,12 +49,12 @@ class AccountController extends Controller
         $account->login = $request->input('login');
         $account->password = $request->input('password');
         $account->email = $request->input('email');
-        $account->owner = $request->input('owner');
+        $account->employee_id = $request->input('employee_id');
         $account->active = $request->input('active');
 
         $account->save();
 
-        return redirect('/Account/show');
+        return redirect('/account/show');
     }
 
     public function delete(Request $request)
@@ -60,7 +63,52 @@ class AccountController extends Controller
         
         $account = Account::destroy($accountid);
 
-        return redirect('/Account/show');
+        return redirect('/account/show');
     }
 
+    public function accountOwner($id){
+        $owner = Account::with('employee')
+            ->where('employee_id','=', $id)
+            ->get();
+
+        return $owner->toJson();
+    }
+
+    public function permAccount($id){
+        $permission = Account::with('Position')
+            ->where('id', '=', $id)
+            ->get();
+        return $permission->toJson();
+    }
+
+    public function myPermissions($id){
+        
+        $myPermission=DB::table('accounts')
+            ->Join('employees','employee_id','=','employees.id')
+            ->Join('positions','position_id','=','positions.id')
+            ->where('accounts.id',$id)
+            ->select('positions.permission')
+            ->get();
+        return $myPermission->toJson();
+    }
+
+    public function checkPerm(){
+
+        $userid = Auth::user()->id;
+        $userperm = myPermissions($userid)->permission;
+
+        if($userperm == 'superadmin')
+            return 1;
+        elseif($userperm == 'kierownik')
+            return 2;
+        elseif($userperm == 'inzynier')
+            return 3;
+        elseif($userperm == 'pracownik')
+            return 4;
+        else
+            return response(401);
+        
+    }
+
+    
 }

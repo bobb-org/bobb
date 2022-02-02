@@ -1,0 +1,41 @@
+[
+    {
+        "id": 1,
+        "realization_id": 1,
+        "autodesk_forge_urn": "zxczxvzwd2fdea21rfd2ecz",
+        "created_at": "2022-01-19T20:26:36.000000Z",
+        "updated_at": "2022-01-16T20:26:40.000000Z",
+        "asset_object": [
+            {
+                "id": 1,
+                "asset_id": 1,
+                "name": "CMH 126",
+                "properties": null,
+                "images": null,
+                "schemes": null,
+                "created_at": "2022-01-19T20:27:39.000000Z",
+                "updated_at": "2022-01-20T20:27:44.000000Z"
+            },
+            {
+                "id": 2,
+                "asset_id": 1,
+                "name": "CMH 129",
+                "properties": null,
+                "images": null,
+                "schemes": null,
+                "created_at": "2022-01-20T20:32:49.000000Z",
+                "updated_at": "2022-01-20T20:32:58.000000Z"
+            },
+            {
+                "id": 3,
+                "asset_id": 1,
+                "name": "CMH 121",
+                "properties": null,
+                "images": null,
+                "schemes": null,
+                "created_at": "2022-01-20T20:32:49.000000Z",
+                "updated_at": "2022-01-20T20:32:58.000000Z"
+            }
+        ]
+    }
+]

@@ -1,34 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\SpaController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\AssetObjectController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\EmployeeToRealizationController;
+use App\Http\Controllers\EmployeeRealizationController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RealizationController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard'); //uwaga tu jest foreach od account show
 
 
 //Route::get('/{any}', [SpaController::class, 'index'])->where('any', '.*');
@@ -152,3 +135,14 @@ Route::group(['prefix' => 'realization'], function (){
     Route::get('delete', [RealizationController::class, 'delete'])//post or get
         ->name('realization.delete');
 });
+
+Route::get('owner/{id}', [AccountController::class, 'accountOwner']);//post or get zwraca dane z emoloyee powiązane z account
+
+Route::get('asset/listObjects/{id}', [AssetController::class, 'assetObjlist']); // pobieramy listę obiektów przypisanych do assetu
+
+Route::get('myRealizations/{id}', [EmployeeRealizationController::class, 'getMyRealizations']); //pobiera realizacje z nazwami w kontrakcie przypisanych do uzytkownika
+
+Route::get('assetobject/templates', [AssetObjectController::class, 'getAssetObjectTemplates']); //template properties w AssetObject zwraca content z pliku w storage/app/assetobject_templates.json
+
+Route::get('eloquent/permission/{id}', [AccountController::class, 'permAccount']); // Eloquent
+Route::get('qb/permission/{id}', [AccountController::class, 'myPermissions']);// QueryBuilder

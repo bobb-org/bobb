@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Position;
+use App\Http\Controllers\AccountController; //check perm
 
 class PositionController extends Controller
 {
@@ -15,43 +16,63 @@ class PositionController extends Controller
 
     public function show()
     {
-        $positionList = Position::all();
-        return json_encode($positiontList);
+        $userperm = AccountController::checkPerm();
+        if($userperm == 1 || $userperm == 2){
+            $positionList = Position::all();
+            return $positiontList->toJson();
+        }
+        else
+            return response(401);
     }
 
     public function store(Request $request)
     {
-        $position = new Position;
-        
-        $position->name = $request->input('name');
-        $position->permission = $request->input('permission');
-        
-        $position->save();
-        
-        return redirect('/Position/show');
+        $userperm = AccountController::checkPerm();
+        if($userperm == 1){
+            $position = new Position;
+            
+            $position->name = $request->input('name');
+            $position->permission = $request->input('permission');
+            
+            $position->save();
+            
+            return redirect('/position/show');
+        }
+        else
+            return response(401);   
     }
 
     public function update(Request $request)
     {
-        $positionid=$request->input('id');
-        
-        $position = Position::find($positionid);
+        $userperm = AccountController::checkPerm();
+        if($userperm == 1){
+            $positionid=$request->input('id');
+            
+            $position = Position::find($positionid);
 
-        $position->name = $request->input('name');
-        $position->permission = $request->input('permission');
+            $position->name = $request->input('name');
+            $position->permission = $request->input('permission');
 
-        $position->save();
+            $position->save();
 
-        return redirect('/Position/show');
+            return redirect('/position/show');
+        }
+        else
+            return response(401);
     }
 
     public function delete(Request $request)
     {
-        $positionid=$request->input('id');
-        
-        $position = Position::destroy($positionid);
+        $userperm = AccountController::checkPerm();
+        if($userperm == 1){
+            $positionid=$request->input('id');
+            
+            $position = Position::destroy($positionid);
 
-        return redirect('/Position/show');
+            return redirect('/position/show');
+        }
+        else
+            return response(401);
     }
 
 }
